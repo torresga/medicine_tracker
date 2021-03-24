@@ -1,0 +1,68 @@
+<h1><%= @user.email %>'s Strains</h1>
+
+<h2>Enter a new strain</h2>
+
+<%= form_with(model: @strain, local: true, url: user_strains_path(@user)) do |strain_form| %>
+  <fieldgroup>
+    <div class="mb-3">
+      <%= strain_form.label :name %>
+      <%= strain_form.text_field :name %>
+    </div>
+    <div class="mb-3">
+      <%= strain_form.label :brand %>
+      <%= strain_form.select :brand, ["Agri-Kind", "Bank", "Calypso", "Cresco",
+                              "Dr. Solomon's", "FarmaceuticalRx",
+                              "gLeaf", "GPEN", "Grassroots", "Ilera",
+                              "Kind Tree", "Liberty",
+                              "Moxie", "Nira+", "Prime Wellness", "Prism",
+                              "Rythm", "Select", "Standard Farms", "Supply", "Terrapin", "The Lab", "Vireo"] %>
+    </div>
+
+    <div class="mb-3">
+      <%= strain_form.label :strain_type %>
+      <%= strain_form.select :strain_type, ["Sativa", "Indica", "Hybrid"] %>
+    </div>
+
+    <div class="mb-3">
+      <%= strain_form.label :form %>
+      <%= strain_form.select :form, ["Flower", "Capsule", "Tincture",
+                              "Cartridge", "Live Resin", "Wax",
+                              "Rick Simpson Oil", "Diamonds/Crystals", "Shatter", "Syringe", "Isolate", "Rosin",
+                              "Sauce", "Topical"] %>
+    </div>
+
+    <div class="mb-3">
+      <%= strain_form.label :notes %>
+      <%= strain_form.text_area :notes %>
+    </div>
+
+    <%= strain_form.submit "Submit" %>
+  </fieldgroup>
+<% end %>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th>Brand</th>
+      <th>Type</th>
+      <th>Form</th>
+      <th>Notes</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @user.strains.each do |strain| %>
+    <tr>
+      <td><%= strain.name %></td>
+      <td><%= strain.brand %></td>
+      <td><%= strain.strain_type %></td>
+      <td><%= strain.form %></td>
+      <td><%= strain.notes %></td>
+      <td><%= link_to "Edit", edit_user_strain_path(@user, strain) %></td>
+      <td><%= link_to "Delete", user_strain_path(@user, strain), method: :delete %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

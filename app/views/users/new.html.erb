@@ -1,0 +1,23 @@
+<h1>Sign Up Here</h1>
+<% if flash[:message] %>
+  <p><%= flash[:message] %></p>
+<% end %>
+
+<%= form_with(model: @user, local: true) do |form| %>
+  <fieldgroup>
+    <div class="mb-3">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.email_field :email, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password, class: "form-label" %>
+      <%= form.password_field :password, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :password_confirmation, class: "form-label" %>
+      <%= form.password_field :password_confirmation, class: "form-control" %>
+    </div>
+  </fieldgroup>
+
+  <%= form.submit "Sign Up"  %>
+<% end %>
