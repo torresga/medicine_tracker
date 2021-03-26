@@ -31,7 +31,7 @@ class StrainsController < ApplicationController
   private
 
   def strains_params
-    params.require(:strain).permit(:name, :brand, :strain_type, :form, :notes)
+    params.require(:strain).permit(:name, :brand, :strain_type, :form, :notes, :images => [])
   end
 
 end
