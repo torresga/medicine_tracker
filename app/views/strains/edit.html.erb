@@ -32,6 +32,11 @@
     <%= form.label :notes %>
     <%= form.text_area :notes %>
   </div>
+
+  <div class="mb-3">
+    <%= form.label :images %>
+    <%= form.file_field :images, multiple: true %>
+  </div>
 </fieldgroup>
 
 <%= form.submit "Update strain" %>

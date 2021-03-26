@@ -36,6 +36,11 @@
       <%= strain_form.text_area :notes %>
     </div>
 
+    <div class="mb-3">
+      <%= strain_form.label :images %>
+      <%= strain_form.file_field :images, multiple: true %>
+    </div>
+
     <%= strain_form.submit "Submit" %>
   </fieldgroup>
 <% end %>
@@ -60,6 +65,13 @@
       <td><%= strain.strain_type %></td>
       <td><%= strain.form %></td>
       <td><%= strain.notes %></td>
+      <td>
+        <ul>
+        <% strain.images.each do |image| %>
+          <li><%= image_tag(image, size: "100x100")%></li>
+        <% end %>
+        </ul>
+      </td>
       <td><%= link_to "Edit", edit_user_strain_path(@user, strain) %></td>
       <td><%= link_to "Delete", user_strain_path(@user, strain), method: :delete %></td>
     </tr>
