@@ -1,7 +1,5 @@
 class DropAndReAddStrainsTable < ActiveRecord::Migration[6.0]
   def change
-    drop_table(:strains)
-
     create_table(:strains) do |t|
       t.string :name
       t.string :brand
