@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :strains
   end
+
+  root 'sessions#new'
 end
